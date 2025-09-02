@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     var button = document.getElementById("get-whether-btn");
-    var whetherInfo = document.getElementById("whether-info");
+    var weatherInfo = document.getElementById("whether-info");
     var cityName = document.getElementById("city-name");
     var temperature = document.getElementById("temperature");
     var description = document.getElementById("description");
@@ -30,13 +30,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    function displayWhetherData(whetherData) {
+    function displayWhetherData(weatherData) {
 
     }
 
     function showErrorData() {
         console.log("hidde")
-        whetherInfo.classList.add("hidden");
+        weatherInfo.classList.add("hidden");
         errorMessage.classList.remove('hidden');
     }
 })
