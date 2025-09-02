@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
         if (city === "") return "";
 
         try {
-            var whetherData = await fetchWeatherData(city);
-            displayWeatherData(whetherData);
+            var weatherData = await fetchWeatherData(city);
+            displayWeatherData(weatherData);
         } catch (error) {
             showErrorData();
         }
