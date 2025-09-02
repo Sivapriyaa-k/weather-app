@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    var button = document.getElementById("get-whether-btn");
-    var weatherInfo = document.getElementById("whether-info");
+    var button = document.getElementById("get-weather-btn");
+    var weatherInfo = document.getElementById("weather-info");
     var cityName = document.getElementById("city-name");
     var temperature = document.getElementById("temperature");
     var description = document.getElementById("description");
@@ -13,14 +13,14 @@ document.addEventListener("DOMContentLoaded", function () {
         if (city === "") return "";
 
         try {
-            var whetherData = await fetchWhetherData(city);
-            displayWhetherData(whetherData);
+            var whetherData = await fetchWeatherData(city);
+            displayWeatherData(whetherData);
         } catch (error) {
             showErrorData();
         }
     })
 
-    async function fetchWhetherData(city) {
+    async function fetchWeatherData(city) {
 
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
         var response = fetch(url);
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    function displayWhetherData(weatherData) {
+    function displayWeatherData(weatherData) {
 
     }
 
