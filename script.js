@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
             var weatherData = await fetchWeatherData(city);
             displayWeatherData(weatherData);
         } catch (error) {
+            console.log(error)
             showErrorData();
         }
     })
@@ -23,20 +24,30 @@ document.addEventListener("DOMContentLoaded", function () {
     async function fetchWeatherData(city) {
 
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
-        var response = fetch(url);
+        var response = await fetch(url);
         console.log(typeof response)
-        console.log(response)
+        if (!response.ok) {
+            console.log(response.ok)
+            throw new Error("City Not Found");
+        }
 
-
+        var data = response.json();
+        return data;
     }
 
     function displayWeatherData(weatherData) {
+        console.log(weatherData);
+        const { name, main, weather } = weatherData;
+        cityName.textContent = name;
+        temperature.textContent = `Temperature : ${main.temp}`
+        description.textContent = `Weather : ${weather[0].description}`
+        weatherInfo.classList.remove("hidden");
+        errorMessage.classList.add('hidden');
 
     }
 
     function showErrorData() {
-        console.log("hidde")
-        weatherInfo.classList.add("hidden");
-        errorMessage.classList.remove('hidden');
+        weatherInfo.classList.remove("hidden");
+        errorMessage.classList.add('hidden');
     }
 })
